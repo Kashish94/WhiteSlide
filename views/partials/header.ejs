@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WhiteSlide</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <script src="socket.io/socket.io.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">
+            <img src="./images/icon.png" alt="icon" style="width: 50px">
+        </a>
+        <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser) { %>
+            <li><a href="/register">Sign Up!</a></li>
+            <li><a href="/login">Login!</a></li>
+            <% } else { %>
+            <li><a href="/home">Logged in as <%= currentUser.firstName %>!</a></li>
+            <li><a href="/logout">Logout!</a></li>
+            <% } %>
+        </ul>
+    </nav>
+
+    <% if(error && error.length > 0) { %>
+        <div class="container" style="text-align: center;">
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        </div>
+    <% } %>
+
+    <% if(success && success.length > 0) { %>
+        <div class="container" style="text-align: center;">
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        </div>
+    <% } %>

@@ -1,0 +1,21 @@
+<% include partials/header %>
+
+<div class="container">
+    <h1 style="text-align: center; color: #a8d4ee;">Login</h1>
+    <hr>
+    <div style="width: 30%; margin: auto">
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" style="margin: auto">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+<% include partials/footer %>

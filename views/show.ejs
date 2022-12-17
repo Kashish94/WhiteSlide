@@ -1,0 +1,58 @@
+<% include partials/header %>
+
+<style>
+    body {
+        background: white;
+    }
+
+    html {
+        background: white;
+    }
+
+    .navbar {
+        background: rgb(243, 242, 241);
+    }
+
+    input[type="text"],
+    textarea {
+        background-color: rgb(243, 242, 241);
+    }
+</style>
+<script type="text/javascript" src="./js/client.js"> </script>
+
+<span id="room" hidden>
+    <%= id %>
+</span>
+<div>
+    <canvas id="drawing"></canvas>
+</div>
+<button id="pen">Pen</button>
+<button id="eraser">Eraser</button>
+
+<hr>
+<div>
+    <% if(currentUser) { %>
+    <div class="container">
+        <div style="width: 30%; margin: auto;">
+            <form action="/user/rooms/new" method="POST">
+                <div class="form-group">
+                    <input type="text" name="roomId" value="<%=id%>" hidden>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="roomName"
+                        placeholder="Enter a short name for the room!" required>
+                </div>
+                <button class="btn btn-primary btn-block">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+    <% } else { %>
+    <h3>
+        Sign Up or Login to save this Room!
+    </h3>
+    <% } %>
+</div>
+
+<% include partials/footer %>
